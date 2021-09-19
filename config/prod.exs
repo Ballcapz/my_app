@@ -10,7 +10,7 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :my_app, MyAppWeb.Endpoint,
-  url: [host: "example.com", port: 80],
+  url: [host: "ballcapz.dev", port: 80],
   cache_static_manifest: "priv/static/cache_manifest.json"
 
 # Do not print debug messages in production
@@ -21,22 +21,30 @@ config :logger, level: :info
 # To get SSL working, you will need to add the `https` key
 # to the previous section and set your `:url` port to 443:
 #
-#     config :my_app, MyAppWeb.Endpoint,
-#       ...
-#       url: [host: "example.com", port: 443],
-#       https: [
-#         port: 443,
-#         cipher_suite: :strong,
-#         keyfile: System.get_env("SOME_APP_SSL_KEY_PATH"),
-#         certfile: System.get_env("SOME_APP_SSL_CERT_PATH"),
-#         transport_options: [socket_opts: [:inet6]]
-#       ]
+    config :my_app, MyAppWeb.Endpoint,
+      url: [host: "ballcapz.dev", port: 443],
+      cache_static_manifest: "priv/static/cache_manifest.json"
+      server: true,
+      force_ssl: [hsts: true],
+      http: [port: 4000, transport_options: [socket_opts: [:inet6]]],
+      https: [
+        port: 4040,
+        cipher_suite: :strong,
+        keyfile: System.get_env("SOME_APP_SSL_KEY_PATH"),
+        certfile: System.get_env("SOME_APP_SSL_CERT_PATH"),
+        transport_options: [socket_opts: [:inet6]]
+      ]
 #
 # The `cipher_suite` is set to `:strong` to support only the
 # latest and more secure SSL ciphers. This means old browsers
 # and clients may not be supported. You can set it to
 # `:compatible` for wider support.
 #
+config :my_app, :cert_path, "/home/belu/site_encrypt_db"
+
+config :my_app, :cert_mode, "production"
+
+
 # `:keyfile` and `:certfile` expect an absolute path to the key
 # and cert in disk or a relative path inside priv, for example
 # "priv/ssl/server.key". For all supported SSL configuration
