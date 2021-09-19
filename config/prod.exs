@@ -30,8 +30,6 @@ config :logger, level: :info
       https: [
         port: 4040,
         cipher_suite: :strong,
-        keyfile: System.get_env("SOME_APP_SSL_KEY_PATH"),
-        certfile: System.get_env("SOME_APP_SSL_CERT_PATH"),
         transport_options: [socket_opts: [:inet6]]
       ]
 #
@@ -40,7 +38,7 @@ config :logger, level: :info
 # and clients may not be supported. You can set it to
 # `:compatible` for wider support.
 #
-config :my_app, :cert_path, "/home/belu/site_encrypt_db"
+config :my_app, :cert_path, "/home/zach/site_encrypt_db"
 
 config :my_app, :cert_mode, "production"
 
